@@ -5,6 +5,9 @@ export const RkButtonTypes = (theme) => {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+        flex: 1
+      },
+      wrapper: {
         borderRadius: 4,
         paddingVertical: 8,
         paddingHorizontal: 12,
@@ -15,8 +18,7 @@ export const RkButtonTypes = (theme) => {
       },
       content: {
         fontSize: theme.fonts.sizes.base,
-        alignSelf: 'center',
-        textAlign: 'center',
+        textAlign: 'center'
       }
     },
     basic: {
@@ -25,28 +27,35 @@ export const RkButtonTypes = (theme) => {
     },
     primary: {
       backgroundColor: theme.colors.back.primary,
+      underlayColor: theme.colors.back.primaryActive,
       color: theme.colors.text.additional
     },
     warning: {
       backgroundColor: theme.colors.back.warning,
+      underlayColor: theme.colors.back.warningActive,
       color: theme.colors.text.additional
     },
     danger: {
       backgroundColor: theme.colors.back.danger,
+      underlayColor: theme.colors.back.dangerActive,
       color: theme.colors.text.additional
     },
     success: {
       backgroundColor: theme.colors.back.success,
+      underlayColor: theme.colors.back.successActive,
       color: theme.colors.text.additional
     },
     info: {
       backgroundColor: theme.colors.back.info,
+      underlayColor: theme.colors.back.infoActive,
       color: theme.colors.text.additional
     },
     outline: {
+      underlayColor: theme.colors.back.primaryActive,
       borderColor: theme.colors.border.base,
       borderWidth: 1,
-      color: theme.colors.border.base,
+      color: theme.colors.text.primary,
+      colorActive: theme.colors.text.additional,
       backgroundColor: theme.colors.back.outline
     },
     rounded: {
@@ -59,13 +68,13 @@ export const RkButtonTypes = (theme) => {
       fontSize: theme.fonts.sizes.small,
       height: 36,
       width: 80,
-      container: {
+      wrapper: {
         paddingVertical: 4,
         paddingHorizontal: 6,
       }
     },
     medium: {
-      container: {
+      wrapper: {
         paddingVertical: 8,
         paddingHorizontal: 12,
       },
@@ -75,7 +84,7 @@ export const RkButtonTypes = (theme) => {
       fontSize: theme.fonts.sizes.large,
       height: 52,
       width: 180,
-      container: {
+      wrapper: {
         paddingVertical: 10,
         paddingHorizontal: 15,
       }
@@ -84,7 +93,7 @@ export const RkButtonTypes = (theme) => {
       fontSize: theme.fonts.sizes.xlarge,
       height: 60,
       width: -1,
-      container: {
+      wrapper: {
         alignSelf: 'stretch',
         paddingVertical: 15,
         paddingHorizontal: 20,
@@ -94,7 +103,7 @@ export const RkButtonTypes = (theme) => {
       backgroundColor: 'transparent',
       width: null,
       height: null,
-      container: {
+      wrapper: {
         paddingVertical: 0,
         paddingHorizontal: 0,
       }

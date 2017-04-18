@@ -1,46 +1,103 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
+  TouchableHighlight,
   View,
 } from 'react-native';
 import _ from 'lodash';
 
 import {RkText} from '../text/rkText';
 import {RkComponent} from '../rkComponent'
+import {changeColor} from '../../styles/colorUtils'
 
 export class RkButton extends RkComponent {
   componentName = 'RkButton';
   typeMapping = {
-    container: {
+    wrapper: {
+      underlayColor: 'underlayColor',
       backgroundColor: 'backgroundColor',
       borderColor: 'borderColor',
       borderRadius: 'borderRadius',
       borderWidth: 'borderWidth',
       width: 'width',
-      height: 'height'
+      height: 'height',
     },
+    container: {},
     content: {
       color: 'color',
+      colorActive: 'colorActive',
       fontSize: 'fontSize'
     }
   };
 
+  constructor(props) {
+    super(props);
+    this.setActive = this._setActiveState.bind(this);
+    this.setInactive = this._setInactiveState.bind(this);
+    this.state = {
+      active: false
+    }
+  }
+
+  _setActiveState() {
+    this.setState({
+      active: true
+    })
+  }
+
+  _setInactiveState() {
+    this.setState({
+      active: false
+    })
+  }
+
+  _getUnderlayColor(wrapper) {
+    let underlayColor = super.extractNonStyleValue(wrapper, 'underlayColor');
+    if (underlayColor) {
+      underlayColor = changeColor(underlayColor, 1.3);
+    }
+    return underlayColor;
+  }
+
+  _getContentColor(content, underlayColor) {
+    let colorInactive = super.extractNonStyleValue(content, 'color');
+    let colorActive = super.extractNonStyleValue(content, 'colorActive');
+    if (!colorActive) {
+      if (!underlayColor || underlayColor === 'transparent')
+        colorActive = changeColor(colorInactive, 1.3);
+      else
+        return colorInactive;
+    }
+
+    return this.state.active ? colorActive : colorInactive;
+  }
+
   render() {
-    let {container, content} = super.defineStyles();
+    let {wrapper, container, content} = super.defineStyles();
+    let underlayColor = this._getUnderlayColor(wrapper);
+    let contentColor = this._getContentColor(content, underlayColor);
+
+    content.push({color: contentColor});
+
     let touchableProps = {
-      onPress: this.props.onPress,
+      onPress: this.props.onPress || (() => {
+      }),
       onPressIn: this.props.onPressIn,
       onPressOut: this.props.onPressOut,
       onLongPress: this.props.onLongPress
     };
 
     return (
-      <TouchableOpacity style={[container, this.props.style]} {...touchableProps}>
-        {this.props.children && this._renderChildren(content)}
-      </TouchableOpacity>
+      <TouchableHighlight onShowUnderlay={this.setActive}
+                          onHideUnderlay={this.setInactive}
+                          activeOpacity={1}
+                          underlayColor={underlayColor}
+                          style={[wrapper, this.props.style]}
+                          {...touchableProps}>
+        <View style={[container, this.props.containerStyle]}>
+          {this.props.children && this._renderChildren(content)}
+        </View>
+      </TouchableHighlight>
     );
   }
 
@@ -54,7 +111,7 @@ export class RkButton extends RkComponent {
       if (typeof baby === 'string') {
         return displayText(baby);
       } else {
-        let {style:babyStyle, ...babyProps} = baby.props;
+        let {style: babyStyle, ...babyProps} = baby.props;
         return React.cloneElement(baby, {
           style: [style, this.props.contentStyle, babyStyle],
           ...babyProps

@@ -19,7 +19,7 @@ export let bootstrap = () => {
   RkTheme.setType('RkText', 'bold', {
     text: {
       fontFamily: robotoMed,
-  }
+    }
   });
 
   RkTheme.setType('RkText', 'header', {
@@ -42,6 +42,7 @@ export let bootstrap = () => {
    */
 
   RkTheme.setType('RkButton', 'outline-success', {
+    underlayColor: RkTheme.current.colors.success,
     backgroundColor: 'transparent',
     borderColor: RkTheme.current.colors.success,
     borderWidth: 1,

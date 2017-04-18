@@ -38,7 +38,12 @@ export const DefaultTheme = {
       base: Values.foreground,
       additional: Values.background,
       subtitle: Values.foreground,
-      hint: '#0000008e'
+      hint: '#0000008e',
+      primary: Values.primary,
+      success: Values.success,
+      info: Values.info,
+      warning: Values.warning,
+      danger: Values.danger,
     },
     back: {
       base: Values.background,

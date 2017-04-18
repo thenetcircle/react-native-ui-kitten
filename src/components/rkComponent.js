@@ -20,14 +20,14 @@ export class RkComponent extends Component {
     return this._getTypes(types);
   }
 
-  extractNonStyleValue(styles, property) {
+  extractNonStyleValue(styles, property, remove = true) {
     let val = _.find(styles, (e) => e.hasOwnProperty(property));
-    if (val) {
-      styles.splice(styles.indexOf(val), 1);
-    }
-    else {
+    if (!val)
       return val;
-    }
+
+    if (remove)
+      styles.splice(styles.indexOf(val), 1);
+
     return val[property];
   }
 

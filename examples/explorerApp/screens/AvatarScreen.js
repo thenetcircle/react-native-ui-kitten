@@ -1,6 +1,6 @@
 import React, {Component}from 'react';
-import {StyleSheet, ScrollView, TextInput, TouchableOpacity, View, Image, Text} from 'react-native'
-import {RkText, RkTheme} from 'react-native-ui-kitten'
+import {StyleSheet, ScrollView, TextInput, TouchableOpacity, View, TouchableHighlight, Text} from 'react-native'
+import {RkText, RkTheme, RkButton} from 'react-native-ui-kitten'
 import {Avatar} from '../components/avatar'
 
 import {UtilStyles} from '../style/styles';
@@ -19,6 +19,9 @@ export class AvatarScreen extends Component {
     return (
       <ScrollView automaticallyAdjustContentInsets={true}
                   style={UtilStyles.container}>
+
+        <RkButton style={[{backgroundColor:'pink'},{color:'blue'}]}> Text</RkButton>
+
         <View style={[UtilStyles.section, UtilStyles.bordered]}>
           <RkText rkType='header'>Base avatar</RkText>
           <View style={UtilStyles.columnContainer}>

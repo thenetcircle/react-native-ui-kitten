@@ -100,30 +100,36 @@ export class ButtonScreen extends Component {
             <RkText>But can contain not only text but icons.</RkText>
           </View>
           <View style={UtilStyles.columnContainer}>
-            <RkButton style={[{width: 110, justifyContent: 'flex-start', paddingLeft: 9}, UtilStyles.spaceBottom]}
+            <RkButton style={[{width: 110}, UtilStyles.spaceBottom]}
+                      containerStyle={{justifyContent: 'flex-start', paddingLeft: 0}}
                       rkType='rounded danger'>
               <Icon style={{marginRight: 9, fontSize: 29}} name={'times-circle'}/>
               <RkText>Delete</RkText>
             </RkButton>
 
-            <RkButton style={[{width: 100, justifyContent: 'flex-start', paddingLeft: 9}, UtilStyles.spaceVertical]}
+            <RkButton style={[{width: 100}, UtilStyles.spaceVertical]}
+                      containerStyle={{justifyContent: 'flex-start', paddingLeft: 0}}
                       rkType='rounded success'>
               <Icon style={{marginRight: 9, fontSize: 29}} name={'times-circle'}/>
               <RkText>Add</RkText>
             </RkButton>
 
-            <RkButton style={[{justifyContent: 'flex-start', paddingLeft: 0}, UtilStyles.spaceVertical]}>
-              <Icon style={{marginHorizontal: 16, fontSize: 21}} name={'facebook'}/>
+            <RkButton style={UtilStyles.spaceVertical}
+                      containerStyle={{justifyContent: 'flex-start', paddingLeft: 0}}>
+              <Icon style={{marginRight: 16, fontSize: 21}} name={'facebook'}/>
               <RkText>Facebook</RkText>
             </RkButton>
 
-            <RkButton style={[{justifyContent: 'flex-start', paddingLeft: 0}, UtilStyles.spaceVertical]} rkType='info'>
-              <Icon style={{marginHorizontal: 12, fontSize: 22}} name={'twitter'}/>
+            <RkButton style={ UtilStyles.spaceVertical}
+                      containerStyle={{justifyContent: 'flex-start', paddingLeft: 0}}
+                      rkType='info'>
+              <Icon style={{marginRight: 12, fontSize: 22}} name={'twitter'}/>
               <RkText>Twitter</RkText>
             </RkButton>
 
-            <RkButton style={[styles.githubButton, UtilStyles.spaceTop]} rkType='info'>
-              <Icon style={{marginHorizontal: 12, fontSize: 25}} name={'github'}/>
+            <RkButton style={[{backgroundColor: '#292f34',}, UtilStyles.spaceTop]}
+                      containerStyle={{justifyContent: 'flex-start', paddingLeft: 0}}>
+              <Icon style={{marginRight: 12, fontSize: 25}} name={'github'}/>
               <RkText>Github</RkText>
             </RkButton>
           </View>
@@ -142,7 +148,7 @@ export class ButtonScreen extends Component {
               <Icon style={{fontSize: 24}} name={'envelope'}/>
             </RkButton>
             <RkButton rkType='success' style={styles.iconButton}>
-              <Icon style={{fontSize: 26, fontFamily:'FontAwesome'}} name={'plus'}/>
+              <Icon style={{fontSize: 26, fontFamily: 'FontAwesome'}} name={'plus'}/>
             </RkButton>
             <RkButton rkType='success circle' style={styles.circleIconButton}>
               <Icon style={{fontSize: 26}} name={'plus'}/>
@@ -185,11 +191,6 @@ export class ButtonScreen extends Component {
 }
 
 let styles = StyleSheet.create({
-  githubButton: {
-    backgroundColor: '#292f34',
-    justifyContent: 'flex-start',
-    paddingLeft: 0
-  },
   iconButton: {
     width: 50,
     marginHorizontal: 8,
