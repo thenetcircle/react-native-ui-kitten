@@ -14,6 +14,7 @@ export const RkButtonTypes = (theme) => {
       },
       content: {
         fontSize: theme.fonts.sizes.base,
+        fontWeight: '500',
         alignSelf: 'center',
         textAlign: 'center',
       }
